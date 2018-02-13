@@ -1,7 +1,7 @@
 #include <iostream>
 #include <stdlib.h>
 #include <unistd.h>
-#include <math.h>
+//#include <math.h>
 
 using namespace std;
 
