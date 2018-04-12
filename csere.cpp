@@ -2,40 +2,46 @@
 
 using namespace std;
 
-void csere(int &a, int &b)
-	{
-		a+=b;
-		b=a-b;
-		a-=b;
-	} 
+void exorcsere(int &a,int &b);
+void cserekulonbseg(int &a, int &b);
+void csereszorzat(int &a, int &b);
 
 int main()
 {
-	int x=0;
-	int y=0;
-	cout << "Irj be egy szamot: ";
-	cin >> x;
-	cout << endl;
-	cout << "Irj be egy masik szamot: ";
-	cin >> y;
-	cout << endl;
-	
+    int x, y;
+    cout << "Adj meg 2 változót!" << endl;;
+    cin >> x >> y;
+    cout << "A 2 változó értékei:\n" << x << " és " << y << endl << endl;
 
-	cout << "A beírt számok: " << x << " és " << y << endl;
+    cout << "Csere exorral: " << endl;
+    exorcsere(x,y);
+    cout << x << " és " << y << endl << endl;
 
-	csere(x,y);
-	cout << "A számok felcserélve: " << x  << " és " << y << endl;
+    cout << "Visszacserélve különbséggel:" << endl;
+    cserekulonbseg(x,y);
+    cout << x << " és " << y << endl << endl;
 
+    cout << "Visszacserélve szorzattal:" << endl;
+    csereszorzat(x,y);
+    cout << x << " és " << y << endl;
+
+    return 0;
 }
 
-/*a=5 és b=10
-a=5+10
-a=a+b
-a=15
-b=a-b
-b=15-10
-b=5 <-------
-a=15-5
-a=a-b
-a=10 <------
-a=a-b*/
+void exorcsere(int &a,int &b) {
+    a ^= b;
+    b ^= a;
+    a ^= b;
+    }
+
+void cserekulonbseg(int &a, int &b) {
+    a=a+b;
+    b=a-b;
+    a=a-b;
+    }
+
+void csereszorzat(int &a, int &b) {
+    a=a*b;
+    b=a/b;
+    a=a/b;
+    }
