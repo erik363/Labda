@@ -1,6 +1,10 @@
+//c++ verzió
+//g++ labda.cpp -o labda
+
 #include <iostream>
 #include <stdlib.h>
 #include <unistd.h>
+#include <vector>
 //#include <math.h>
 
 using namespace std;
@@ -9,8 +13,8 @@ const int width = 50;
 const int height = 20;
 int x=30, y=15;	//labda poziciója
 int n=1, m=1;  //x, y szorzó
-int tombX[width];
-int tombY[height];
+vector <int> tombx;
+vector <int> tomby;
 
 void Logic();
 void Draw();
@@ -18,14 +22,14 @@ void Draw();
 int main(void)
 {
 	//egy szélességnek/magassagnak megfl. elemszámú tömböt, sorozatot vesz fel 1-es értékekkel
-	for (int i=0; i<width; i++) tombX[i]=1;  
-	for (int i=0; i<height; i++) tombY[i]=1;
+	for (int i=0; i<width; i++) tombx.push_back(1);  
+	for (int i=0; i<height; i++) tomby.push_back(1);
 
 	//a tömb 1., ill. utolsó(nálam a fal helyzete miatt utolsó előtti) elemét -1-re cseréljük
-	tombX[0]=-1;
-	tombX[width-1]=-1;
-	tombY[0]=-1;
-	tombY[height]=-1;
+	tombx[0]=-1;
+	tombx[tombx.size()-1]=-1;
+	tomby[0]=-1;
+	tomby[tomby.size()]=-1;
     
     for (;;)
     {
@@ -42,8 +46,8 @@ void Logic()
 {
 	x=x+n;
 	y=y+m;
-	n=n*tombX[x];
-	m=m*tombY[y];
+	n=n*tombx[x];
+	m=m*tomby[y];
 }
 
 void Draw()
